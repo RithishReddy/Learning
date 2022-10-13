@@ -1,32 +1,30 @@
 package main
 
 import (
-
- "Exercise/shapes/pack"
- "fmt"
+	"Exercise_packages/shapes"
+	"Exercise_packages/shapes/measurements"
+	"fmt"
 )
-
-
 
 func main() {
 
-	c := pack.Cube{
+	c := shapes.Cube{
 		Length: 7,
 	}
 
-	b := pack.Box{
+	b := shapes.Box{
 		Length: 5.5,
 		Width:  5.5,
 		Height: 7.7,
 	}
 
-	s := pack.Sphere{
+	s := shapes.Sphere{
 		Radius: 7.14,
 	}
 
-	pack.CalculateVolume(c, "Cube")
-	pack.CalculateVolume(b, "Box")
-	pack.CalculateVolume(s, "Sphere")
+	measurements.CalculateVolume(c, "Cube")
+	measurements.CalculateVolume(b, "Box")
+	measurements.CalculateVolume(s, "Sphere")
 
 	fmt.Println(c)
 	fmt.Println(s)
