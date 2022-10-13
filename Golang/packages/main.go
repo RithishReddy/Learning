@@ -2,8 +2,7 @@ package main
 
 import (
 
-"Exercise/packages/shapes"
-"Exercise/packages/shapes/measurements"
+ "Exercise/shapes/pack"
  "fmt"
 )
 
@@ -11,23 +10,23 @@ import (
 
 func main() {
 
-	c := shapes.Cube{
+	c := pack.Cube{
 		Length: 7,
 	}
 
-	b := shapes.Box{
+	b := pack.Box{
 		Length: 5.5,
 		Width:  5.5,
 		Height: 7.7,
 	}
 
-	s := shapes.Sphere{
+	s := pack.Sphere{
 		Radius: 7.14,
 	}
 
-	measurements.CalculateVolume(c, "Cube")
-	measurements.CalculateVolume(b, "Box")
-	measurements.CalculateVolume(s, "Sphere")
+	pack.CalculateVolume(c, "Cube")
+	pack.CalculateVolume(b, "Box")
+	pack.CalculateVolume(s, "Sphere")
 
 	fmt.Println(c)
 	fmt.Println(s)

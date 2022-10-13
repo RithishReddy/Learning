@@ -1,3 +1,3 @@
-module Exercise/packages
+module Exercise/shapes
 
 go 1.19
