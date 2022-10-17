@@ -9,5 +9,6 @@ func main() {
 		"job":  "developer",
 	}
 	getreq()
+	
 	postreq(details)
 }
