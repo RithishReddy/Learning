@@ -9,27 +9,24 @@ import (
 	"net/http"
 )
 
-type postData struct {
+type User struct {
 	Name      string
 	Job       string
 	Id        string
 	CreatedAt string
 }
 
-func postreq() {
+func postreq(data map[string]string) {
+
 
 	fmt.Println("\nPost req Function")
-	details, _ := json.Marshal(map[string]string{
-		"name": "rithish",
-		"job":  "developer",
-	})
+	details, _ := json.Marshal(data)
 
-	response, err := http.Post("https://reqres.in/api/users", "application/json", bytes.NewBuffer(details))
+	response, err := http.Post(usersApi, contentType, bytes.NewBuffer(details))
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	// fmt.Println(response.Body)
 
 	defer response.Body.Close()
 
@@ -38,11 +35,13 @@ func postreq() {
 		log.Fatal(err)
 	}
 
-	var res postData
+	var res User
 
-	json.Unmarshal(body, &res)
+	err = json.Unmarshal(body, &res)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// fmt.Println(string(body))
 
-	fmt.Println(res.Id, res.Name, res.Job,res.CreatedAt)
+	fmt.Println(res.Id, res.Name, res.Job, res.CreatedAt)
 }
