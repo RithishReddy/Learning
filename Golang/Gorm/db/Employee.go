@@ -17,9 +17,7 @@ type Employee struct {
 	Manager      *Employee
 }
 
-
-
-func ShowEmployeeDetails(db *gorm.DB){
+func ShowEmployeeDetails(db *gorm.DB) {
 	employees := []Employee{}
 	db.Debug().Preload("Manager").Preload("Department").Find(&employees)
 
@@ -31,7 +29,9 @@ func ShowEmployeeDetails(db *gorm.DB){
 			fmt.Printf("Id: %v, Name: %v, Role:%v,Manager: Nil \n", employee.ID, employee.Name, employee.Designation)
 		}
 	}
-	
-	
-	
+
+}
+func (e *Employee) AfterCreate() error {
+	fmt.Printf("Mail sent to User %v \n", e.Name)
+	return nil
 }
