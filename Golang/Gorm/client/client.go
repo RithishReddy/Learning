@@ -17,13 +17,18 @@ func main(){
 		log.Fatalf("did not connect : %v",err)
 	}
 	defer conn.Close()
-	c:=pb.NewEmployeeManagementClient(conn)
+	
+	NewEmployee(conn)
+}
 
+func NewEmployee(conn *grpc.ClientConn){
+
+	c:=pb.NewEmployeeManagementClient(conn)
 	ctx,cancel:=context.WithTimeout(context.Background(),time.Second)
 	defer cancel()
-
 	response,err:=c.CreateNewEmployee(ctx,&pb.NewEmployee{Name: "Vamshi",Designation: "manager",DepartmentID:2 })
-
+	if err!=nil{
+		log.Fatal("Error creating employee")
+	}
 	log.Print(response.Name,response.Id)
-
 }
