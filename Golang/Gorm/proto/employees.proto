@@ -1,0 +1,24 @@
+syntax="proto3";
+
+option go_package ="Exercise/Gorm/proto";
+
+package employees;
+
+service EmployeeManagement{
+    
+    rpc CreateNewEmployee (NewEmployee) returns (Employee){}
+}
+
+
+message Employee{
+    int32 id=1;
+    string name=2;
+}
+
+message NewEmployee{
+    string name=1;
+    string Designation=2;
+    int32 DepartmentID=3;
+    int32 ManagerID=4; 
+
+}
